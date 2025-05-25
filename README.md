@@ -16,18 +16,22 @@ A RESTful task management API built with Go and MongoDB.
 ```mermaid
 flowchart LR
     subgraph Client
-      A[User Agents<br/>Web/Mobile/CLI] 
+      A["User Agents
+Web/Mobile/CLI"]
     end
     subgraph Ingress
-      B[Ingress / API Gateway]
+      B["Ingress / API Gateway"]
     end
     subgraph API
-      C[Go API Pods<br/>(Chi Router)]
-      C --> D[Handlers & Services]
-      D --> E[MongoDB Replica Set]
+      C["Go API Pods
+(Chi Router)"]
+      C --> D["Handlers & Services"]
+      D --> E["MongoDB Replica Set"]
     end
     subgraph Observability
-      F[Prometheus] & G[Log Collector] & H[OpenTelemetry]
+      F["Prometheus"]
+      G["Log Collector"]
+      H["OpenTelemetry"]
     end
 
     A --> B --> C

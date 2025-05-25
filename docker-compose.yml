@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - TASKAPI_DATABASE_URI=mongodb://mongo:27017
+      - TASKAPI_DATABASE_DATABASE=taskdb
+      - TASKAPI_JWT_SECRET=your_secret_key
+    depends_on:
+      - mongo
+    networks:
+      - task-network
+
+  mongo:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - task-network
+
+volumes:
+  mongo_data:
+
+networks:
+  task-network:

@@ -11,6 +11,37 @@ A RESTful task management API built with Go and MongoDB.
 - Health checks
 - Docker support
 
+## Architecture
+
+```mermaid
+flowchart LR
+    subgraph Client
+      A["User Agents
+Web/Mobile/CLI"]
+    end
+    subgraph Ingress
+      B["Ingress / API Gateway"]
+    end
+    subgraph API
+      C["Go API Pods
+(Chi Router)"]
+      C --> D["Handlers & Services"]
+      D --> E["MongoDB Replica Set"]
+    end
+    subgraph Observability
+      F["Prometheus"]
+      G["Log Collector"]
+      H["OpenTelemetry"]
+    end
+
+    A --> B --> C
+    C --> E
+    C --> F
+    C --> G
+    C --> H
+```
+
+
 ## Quick Start
 
 ### Using Docker Compose

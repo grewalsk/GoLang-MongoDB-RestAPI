@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx", // or "react" if you prefer
+    "module": "commonjs" // Jest typically works best with CommonJS modules
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "jest.setup.js" // if it's a .js file
+    // "jest.setup.ts" // if you rename it to .ts
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
